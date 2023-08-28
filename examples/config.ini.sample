@@ -1,0 +1,3 @@
+[SERIAL]
+serial_port = COM12
+sample_interval = 5000
