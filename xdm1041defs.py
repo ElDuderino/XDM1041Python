@@ -20,37 +20,37 @@ class XDM1041Mode(Enum):
 
     def __str__(self):
 
-        if self.value == XDM1041Cmd.MODE_VOLTAGE_DC.value:
+        if self.value == XDM1041Mode.MODE_VOLTAGE_DC.value:
             return "CONF:VOLT:DC\n"
 
-        elif self.value == XDM1041Cmd.MODE_VOLTAGE_AC.value:
+        elif self.value == XDM1041Mode.MODE_VOLTAGE_AC.value:
             return "CONF:VOLT:AC\n"
 
-        elif self.value == XDM1041Cmd.MODE_CURRENT_DC.value:
+        elif self.value == XDM1041Mode.MODE_CURRENT_DC.value:
             return "CONF:CURR:DC\n"
 
-        elif self.value == XDM1041Cmd.MODE_CURRENT_AC.value:
+        elif self.value == XDM1041Mode.MODE_CURRENT_AC.value:
             return "CONF:CURR:AC\n"
 
-        elif self.value == XDM1041Cmd.MODE_RES.value:
+        elif self.value == XDM1041Mode.MODE_RES.value:
             return "CONF:RES\n"
 
-        elif self.value == XDM1041Cmd.MODE_CONT.value:
+        elif self.value == XDM1041Mode.MODE_CONT.value:
             return "CONF:CONT\n"
 
-        elif self.value == XDM1041Cmd.MODE_DIODE.value:
+        elif self.value == XDM1041Mode.MODE_DIODE.value:
             return "CONF:DIOD\n"
 
-        elif self.value == XDM1041Cmd.MODE_CAPACITANCE.value:
+        elif self.value == XDM1041Mode.MODE_CAPACITANCE.value:
             return "CONF:CAP\n"
 
-        elif self.value == XDM1041Cmd.MODE_FREQUENCY.value:
+        elif self.value == XDM1041Mode.MODE_FREQUENCY.value:
             return "CONF:FREQ\n"
 
-        elif self.value == XDM1041Cmd.MODE_PERIOD.value:
+        elif self.value == XDM1041Mode.MODE_PERIOD.value:
             return "CONF:PER\n"
 
-        elif self.value == XDM1041Cmd.MODE_TEMP.value:
+        elif self.value == XDM1041Mode.MODE_TEMP.value:
             return "CONF:TEMP\n"
 
 
@@ -73,7 +73,7 @@ class XDM1041Cmd(Enum):
     def __str__(self):
 
         if self.value == XDM1041Cmd.IDN.value:
-            return "*IDN?"
+            return "*IDN?\n"
 
         elif self.value == XDM1041Cmd.RATE_S.value:
             return "RATE S\n"

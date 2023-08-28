@@ -1,6 +1,7 @@
 from xdm1041defs import XDM1041Mode, XDM1041Cmd
 import logging
 import serial
+import time
 
 
 class XDM1041:
@@ -29,7 +30,6 @@ class XDM1041:
             print("Supported ranges for {}: ".format(xdm_mode.name), end='')
             for key, value in range_dict.items():
                 print("{}:{} ".format(key, value), end='')
-
             print('')
 
     def __init__(self, mode: XDM1041Mode, rng: int = 0, serial_device="/dev/ttyUSB0"):
@@ -88,16 +88,29 @@ class XDM1041:
 
         # we made it, set the range
         cmd = str(XDM1041Cmd.SET_RANGE).format(rng)
+        self.send_cmd(cmd)
 
     def test_conn(self):
-        pass
+        cmd = str(XDM1041Cmd.IDN)
+        self.send_cmd(cmd)
+        time.sleep(0.2)
+        manuf_info = self.read_result()
+        str_to_k = manuf_info.split(',')
+        print(str_to_k)
 
     def send_cmd(self, cmd: str):
-        self.serial.write(str.encode())
+        """
+        Take one of the string commands and encode it and send it over the wire
+        """
+        self.serial.write(cmd.encode())
 
     def read_result(self) -> str:
+        """
+        Not too much to do here, all the output from the instrument are ascii strings with linefeed
+        just read a line and return
+        """
         ret_str = self.serial.readline()
-        return ret_str
+        return ret_str.decode()
 
     def read_val1_raw(self):
         """
@@ -140,3 +153,18 @@ class XDM1041:
     def set_mode(self, mode: XDM1041Mode):
         cmd = str(mode)
         self.send_cmd(cmd)
+
+    def set_sample_speed_slow(self):
+        cmd = str(XDM1041Cmd.RATE_S)
+        self.send_cmd(cmd)
+        time.sleep(0.2)
+
+    def set_sample_speed_med(self):
+        cmd = str(XDM1041Cmd.RATE_M)
+        self.send_cmd(cmd)
+        time.sleep(0.2)
+
+    def set_sample_speed_fast(self):
+        cmd = str(XDM1041Cmd.RATE_F)
+        self.send_cmd(cmd)
+        time.sleep(0.2)
