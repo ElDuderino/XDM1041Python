@@ -70,6 +70,22 @@ class XDM1041Cmd(Enum):
 
     SET_RANGE = 20
 
+    SET_BEEP_ON = 21
+    SET_BEEP_OFF = 22
+    GET_BEEP_STATUS = 23
+
+    GET_SYSTEM_TIME = 30
+    GET_SYSTEM_DATE = 31
+
+    GET_AUTO_MODE = 40
+    SET_AUTO_MODE = 41
+
+    SET_CALC_STAT_OFF = 50
+    SET_CALC_FUNC_AVG = 51
+    GET_CALC_AVG = 52
+    GET_CALC_MIN = 53
+    GET_CALC_MAX = 54
+
     def __str__(self):
 
         if self.value == XDM1041Cmd.IDN.value:
@@ -98,3 +114,39 @@ class XDM1041Cmd(Enum):
 
         elif self.value == XDM1041Cmd.SET_RANGE.value:
             return "RANGE {}\n"
+
+        elif self.value == XDM1041Cmd.SET_BEEP_ON.value:
+            return "SYST:BEEP:STAT ON\n"
+
+        elif self.value == XDM1041Cmd.SET_BEEP_OFF.value:
+            return "SYST:BEEP:STAT OFF\n"
+
+        elif self.value == XDM1041Cmd.GET_BEEP_STATUS.value:
+            return "SYST:BEEP:STAT?\n"
+
+        elif self.value == XDM1041Cmd.GET_SYSTEM_DATE.value:
+            return "SYST:DATE?\n"
+
+        elif self.value == XDM1041Cmd.GET_SYSTEM_TIME.value:
+            return "SYST:TIME?\n"
+
+        elif self.value == XDM1041Cmd.SET_AUTO_MODE.value:
+            return "AUTO\n"
+
+        elif self.value == XDM1041Cmd.GET_AUTO_MODE.value:
+            return "AUTO?\n"
+
+        elif self.value == XDM1041Cmd.SET_CALC_STAT_OFF.value:
+            return "CALC:STAT OFF\n"
+
+        elif self.value == XDM1041Cmd.SET_CALC_FUNC_AVG.value:
+            return "CALC:FUNC AVER\n"
+
+        elif self.value == XDM1041Cmd.GET_CALC_AVG.value:
+            return "CALC:FUNC AVER\n"
+
+        elif self.value == XDM1041Cmd.SET_CALC_FUNC_AVG.value:
+            return "CALC:AVER:AVER?\n"
+
+        elif self.value == XDM1041Cmd.SET_CALC_FUNC_AVG.value:
+            return "CALC:FUNC AVER\n"

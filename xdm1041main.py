@@ -168,3 +168,38 @@ class XDM1041:
         cmd = str(XDM1041Cmd.RATE_F)
         self.send_cmd(cmd)
         time.sleep(0.2)
+
+    def set_calc_avg(self):
+        """
+        Set the CALC function to averaging mode
+        """
+        cmd = str(XDM1041Cmd.SET_CALC_FUNC_AVG)
+        self.send_cmd(cmd)
+        time.sleep(0.2)
+
+    def get_calc_avg(self):
+        """Get the calculated average"""
+        cmd = str(XDM1041Cmd.GET_CALC_AVG)
+        self.send_cmd(cmd)
+        time.sleep(0.05)
+        result = self.read_result()
+        result = float(result)
+        return result
+
+    def get_calc_min(self):
+        """Get the calculated minimum"""
+        cmd = str(XDM1041Cmd.GET_CALC_MIN)
+        self.send_cmd(cmd)
+        time.sleep(0.05)
+        result = self.read_result()
+        result = float(result)
+        return result
+
+    def get_calc_max(self):
+        """Get the calculated maximum"""
+        cmd = str(XDM1041Cmd.GET_CALC_MAX)
+        self.send_cmd(cmd)
+        time.sleep(0.05)
+        result = self.read_result()
+        result = float(result)
+        return result
